@@ -1,3 +1,9 @@
+p {
+  margin-top: 0;
+  padding: 2%;
+  margin-bottom: 1rem;
+}
+
 body {
   font-family: 'Jua', sans-serif;
   background-color: #ffffff;
@@ -6,12 +12,12 @@ body {
   }
   
   .file-upload {
-    background-color: #ffffff;
-    width: 50%;
+    background-color: #2d50714a;
+    width: 70%;
     margin: 0 auto;
-    padding: 0%;
-    max-width: 493px;
-  }
+    padding: 1%;
+    max-width: 800px;
+}
   
   .file-upload-btn {
     width: 100%;
@@ -352,4 +358,8 @@ input:checked + label > .knob > i:before {
   height: 2rem;
   border-radius: 10px;
   background-color: rgba(235, 166, 190, 1);
+}
+
+#label-container {
+  padding: 2%;
 }
