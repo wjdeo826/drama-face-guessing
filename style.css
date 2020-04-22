@@ -1,4 +1,4 @@
-/* On screens that are 600px or less, set the background color to olive */
+/* On screens that are 600px or less, width is set by 600px */
 @media screen and (max-width: 600px) {
   html {
     font-size: 10px;
@@ -372,4 +372,10 @@ input:checked + label > .knob > i:before {
 #label-container {
   padding: 2%;
   font-size: 1.5rem;
+}
+
+#disqus_thread {
+  width: 94%;
+  max-width: 800px;
+  margin: 0 auto;
 }
