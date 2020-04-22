@@ -73,21 +73,22 @@
         <div class="file-upload-content">
             <img class="file-upload-image" id="face-image" src="#" alt="your image" />
             <div class="image-title-wrap">
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                 </div>
-            </div>
-            <p class="mt-1 loading-mention">두근 두근...</p>
+                <p class="mt-1 loading-mention">두근 두근...</p>
             </div>
             <p class="result-message"></p>
             <div id="label-container" class="d-flex flex-column justify-content-around"></div>
-            
-                <button type="button" onclick="window.location.reload(false)" class="mt-1 remove-image">맘에 안들어 묻고 재시도로가!</button>
-            </div>
+
+            <button type="button" onclick="window.location.reload(false)" class="mt-1 remove-image">맘에 안들어 묻고
+                재시도로가!</button>
         </div>
     </div>
-   
+    </div>
+
     <!-- AI and image upload tools -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
@@ -107,15 +108,15 @@
                     $('.image-title').html(input.files[0].name);
                 };
                 reader.readAsDataURL(input.files[0]);
-                init().then(()=>{console.log("Done with loading model")})
-                .then(function(){predict()})
-                .then(function(e) {
-                    $('.spinner-border').hide();
-                    $('.loading-mention').hide();
-                    $('.addthis_inline_share_toolbox').show();
-                    $('.remove-image').show();
+                init().then(() => { console.log("Done with loading model") })
+                    .then(function () { predict() })
+                    .then(function (e) {
+                        $('.spinner-border').hide();
+                        $('.loading-mention').hide();
+                        $('.addthis_inline_share_toolbox').show();
+                        $('.remove-image').show();
                     })
-                
+
 
             } else {
                 removeUpload();
@@ -169,39 +170,39 @@
             prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
             console.log(prediction[0].className);
             var resultTitle, resultExplain, resultCeleb;
-            
-                switch (prediction[0].className) {
-                    case "이익준":
-                        resultTitle = "항상 긍정에너지를 내뿜는 이익준상"
-                        resultExplain = "언제 어디서나 사람들에게 둘러싸여있는 당신은 인기쟁이! 가만히 좀 있으라며 타박을 받곤하지만 미워할 수 없는 당신은 이익준 그 자체!"
-                        resultCeleb = "자신이 힘들 때는 주변사람들에게 기대보세요"
-                        break;
-                    case "채송화":
-                        resultTitle = "모든 것을 완벽히 해내는 채송화상"
-                        resultExplain = "어려서부터 완벽히 해내는 것에 익숙한 당신. 사람들과 함께 일할때도 본인이 하는 게 맘이 편하다. 늘 완벽하고 씩씩한 모습과 밝은 웃음으로 믿음직하고 가까이 하고 싶은 당신은 채송화상!"
-                        resultCeleb = "모든 일에 무조건 열심히 하시나요? 자신에 대해 공부하는 사색의 시간을 가져보세요"
-                        break;
-                    case "김준완":
-                        resultTitle = "차가운 도시 남자 김준완상"
-                        resultExplain = "날카로운 생김새와 차가운 이미지로 가까이 다가가기 힘든 당신. 본인은 그런 관계에 만족한다. 하지만 가끔 보이는 따뜻한 츤데레같은 모습에 자기도 모르게 인기쟁이가 된다."
-                        resultCeleb = "날카로운 말보다 부드러운 말을 건네보세요"
-                        break;
-                    case "안정원":
-                        resultTitle = "부드럽고 착한 이미지의 안정원상"
-                        resultExplain = "무슨 말이라도 다 들어줄 것만 같은 안정원상. 주변인들의 평이 좋고 사람들이 쉽게 다가오지만, 불의를 지나치지 못하는 카리스마있는 사람이다."
-                        resultCeleb = "주변인들을 위해 본인의 모든 것을 희생할 필요는 없어요"
-                        break;
-                    case "양석형":
-                        resultTitle = "알고보면 따뜻한 남자, 양석형상"
-                        resultExplain = "사람들에게 쉽게 다가가지 못하지만 알고 보면 귀여운 매력의 당신! 꼼꼼하고 섬세한 성격으로 지인들에게 인기가 많다. 포근한 매력에 듬직함까지 갖춘 사람들을 다가오게 만드는 사람!"
-                        resultCeleb = "본인의 매력을 숨기지 마세요"
-                        break;
-                    default:
-                        resultTitle = "알수없음"
-                        resultExplain = ""
-                        resultCeleb = ""
-                };
-            
+
+            switch (prediction[0].className) {
+                case "이익준":
+                    resultTitle = "항상 긍정에너지를 내뿜는 이익준상"
+                    resultExplain = "언제 어디서나 사람들에게 둘러싸여있는 당신은 인기쟁이! 가만히 좀 있으라며 타박을 받곤하지만 미워할 수 없는 당신은 이익준 그 자체!"
+                    resultCeleb = "자신이 힘들 때는 주변사람들에게 기대보세요"
+                    break;
+                case "채송화":
+                    resultTitle = "모든 것을 완벽히 해내는 채송화상"
+                    resultExplain = "어려서부터 완벽히 해내는 것에 익숙한 당신. 사람들과 함께 일할때도 본인이 하는 게 맘이 편하다. 늘 완벽하고 씩씩한 모습과 밝은 웃음으로 믿음직하고 가까이 하고 싶은 당신은 채송화상!"
+                    resultCeleb = "모든 일에 무조건 열심히 하시나요? 자신에 대해 공부하는 사색의 시간을 가져보세요"
+                    break;
+                case "김준완":
+                    resultTitle = "차가운 도시 남자 김준완상"
+                    resultExplain = "날카로운 생김새와 차가운 이미지로 가까이 다가가기 힘든 당신. 본인은 그런 관계에 만족한다. 하지만 가끔 보이는 따뜻한 츤데레같은 모습에 자기도 모르게 인기쟁이가 된다."
+                    resultCeleb = "날카로운 말보다 부드러운 말을 건네보세요"
+                    break;
+                case "안정원":
+                    resultTitle = "부드럽고 착한 이미지의 안정원상"
+                    resultExplain = "무슨 말이라도 다 들어줄 것만 같은 안정원상. 주변인들의 평이 좋고 사람들이 쉽게 다가오지만, 불의를 지나치지 못하는 카리스마있는 사람이다."
+                    resultCeleb = "주변인들을 위해 본인의 모든 것을 희생할 필요는 없어요"
+                    break;
+                case "양석형":
+                    resultTitle = "알고보면 따뜻한 남자, 양석형상"
+                    resultExplain = "사람들에게 쉽게 다가가지 못하지만 알고 보면 귀여운 매력의 당신! 꼼꼼하고 섬세한 성격으로 지인들에게 인기가 많다. 포근한 매력에 듬직함까지 갖춘 사람들을 다가오게 만드는 사람!"
+                    resultCeleb = "본인의 매력을 숨기지 마세요"
+                    break;
+                default:
+                    resultTitle = "알수없음"
+                    resultExplain = ""
+                    resultCeleb = ""
+            };
+
             var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
             var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
             var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
@@ -252,16 +253,21 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e9e8d739963b888"></script>
 
 
-        <ins class="kakao_ad_area" style="display:none;" 
-        data-ad-unit    = "DAN-s18wi8hc3w34" 
-        data-ad-width   = "320" 
-        data-ad-height  = "100"></ins> 
-       <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-       
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div class="addthis_inline_share_toolbox_qsva"></div>
+
+
+    <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-s18wi8hc3w34" data-ad-width="320"
+        data-ad-height="100"></ins>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
     <footer style="text-align: center;">@ Kwon Coding</footer>
-<!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+    <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
