@@ -105,6 +105,13 @@ body {
     margin: auto;
     padding: 20px;
   }
+
+  .result-image {
+    max-height: 200px;
+    max-width: 200px;
+    margin: auto;
+    padding: 20px;
+  }
   
   .remove-image {
     width: 200px;
