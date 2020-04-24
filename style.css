@@ -99,6 +99,10 @@ body {
     padding: 60px 0;
   }
   
+  .image-section {
+    display: flex;
+  }
+
   .file-upload-image {
     max-height: 200px;
     max-width: 200px;
