@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>슬의 닮은꼴 찾기</title>
-    <meta name="description" content="사진 한 장으로 슬기로운 의사생활 등장인물 중 자신과 닮은 사람을 찾고 지인들과 공유해보세요!">
+    <title>AI 슬의 닮은꼴 찾기</title>
+    <meta name="description" content="AI가 당신과 닮은 슬기로운 의사생활 캐릭터를 찾아드립니다. 결과를 지인들과 공유해보세요!">
     <link href="https://fonts.googleapis.com/css?family=Jua&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -15,19 +15,19 @@
     <meta name="naver-site-verification" content="98b8ac96fe8fe222a27aca8b326519dc71527fe7" />
     <link rel="canonical" href="https://myfaceinkdrama.shop/">
 
-    <meta property="og:type" content="website"> 
-    <meta property="og:title" content="슬의 닮은꼴 찾기">
-    <meta property="og:description" content="사진 한 장으로 슬기로운 의사생활 등장인물 중 자신과 닮은 사람을 찾고 지인들과 공유해보세요!">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI 슬의 닮은꼴 찾기">
+    <meta property="og:description" content="AI가 당신과 닮은 슬기로운 의사생활 캐릭터를 찾아드립니다. 결과를 지인들과 공유해보세요!">
     <meta property="og:image" content="https://myfaceinkdrama.shop/android-chrome-192x192.png">
     <meta property="og:url" content="https://myfaceinkdrama.shop/">
     <meta property="og:locale" content="ko_KR" />
     <meta property="og:locale" content="en_US" />
 
-    <meta name="twitter:card" content="슬의 닮은꼴 찾기">
-    <meta name="twitter:title" content="슬의 닮은꼴 찾기">
-    <meta name="twitter:description" content="사진 한 장으로 슬기로운 의사생활 등장인물 중 자신과 닮은 사람을 찾고 지인들과 공유해보세요!">
+    <meta name="twitter:card" content="AI 슬의 닮은꼴 찾기">
+    <meta name="twitter:title" content="AI 슬의 닮은꼴 찾기">
+    <meta name="twitter:description" content="AI가 당신과 닮은 슬기로운 의사생활 캐릭터를 찾아드립니다. 결과를 지인들과 공유해보세요!">
     <meta name="twitter:image" content="https://myfaceinkdrama.shop/android-chrome-192x192.png">
-    <meta name="twitter:domain" content="슬의 닮은꼴 찾기">
+    <meta name="twitter:domain" content="AI 슬의 닮은꼴 찾기">
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -163,7 +163,7 @@
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
         // the link to your model provided by Teachable Machine export panel
-        const URL = "https://teachablemachine.withgoogle.com/models/DFyCx0HSA/";
+        const URL = "https://teachablemachine.withgoogle.com/models/YGXct8mZp/";
 
         let model, webcam, labelContainer, maxPredictions;
 
@@ -191,31 +191,30 @@
             const prediction = await model.predict(image, false);
             prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
             console.log(prediction[0].className);
-            console.log(prediction)
             var resultTitle, resultExplain, resultCeleb;
 
             switch (prediction[0].className) {
-                case "이익준":
+                case "lee-ikjun":
                     resultTitle = "<항상 긍정에너지를 내뿜는 이익준상>"
                     resultExplain = "언제 어디서나 사람들에게 둘러싸여있는 당신은 인기쟁이! 가만히 좀 있으라며 타박을 받곤하지만 미워할 수 없는 당신은 이익준 그 자체!"
                     resultCeleb = "자신이 힘들 때는 주변사람들에게 기대보세요"
                     break;
-                case "채송화":
+                case "chae-songhwa":
                     resultTitle = "<모든 것을 완벽히 해내는 채송화상>"
                     resultExplain = "어려서부터 완벽히 해내는 것에 익숙한 당신. 사람들과 함께 일할때도 본인이 하는 게 맘이 편하다. 늘 완벽하고 씩씩한 모습과 밝은 웃음으로 믿음직하고 가까이 하고 싶은 당신은 채송화상!"
                     resultCeleb = "모든 일에 무조건 열심히 하시나요? 자신에 대해 공부하는 사색의 시간을 가져보세요"
                     break;
-                case "김준완":
+                case "kim-junwan":
                     resultTitle = "<차가운 도시 남자 김준완상>"
                     resultExplain = "날카로운 생김새와 차가운 이미지로 가까이 다가가기 힘든 당신. 본인은 그런 관계에 만족한다. 하지만 가끔 보이는 따뜻한 츤데레같은 모습에 자기도 모르게 인기쟁이가 된다."
                     resultCeleb = "날카로운 말보다 부드러운 말을 건네보세요"
                     break;
-                case "안정원":
+                case "an-jeongwon":
                     resultTitle = "<부드럽고 착한 이미지의 안정원상>"
                     resultExplain = "무슨 말이라도 다 들어줄 것만 같은 안정원상. 주변인들의 평이 좋고 사람들이 쉽게 다가오지만, 불의를 지나치지 못하는 카리스마있는 사람이다."
                     resultCeleb = "주변인들을 위해 본인의 모든 것을 희생할 필요는 없어요"
                     break;
-                case "양석형":
+                case "yang-seokhyung":
                     resultTitle = "<알고보면 따뜻한 남자, 양석형상>"
                     resultExplain = "사람들에게 쉽게 다가가지 못하지만 알고 보면 귀여운 매력의 당신! 꼼꼼하고 섬세한 성격으로 지인들에게 인기가 많다. 포근한 매력에 듬직함까지 갖춘 사람들을 다가오게 만드는 사람!"
                     resultCeleb = "본인의 매력을 숨기지 마세요"
@@ -232,7 +231,7 @@
             $('.result-message').html(title + explain + celeb);
             var barWidth;
             // To make the resul compact, edit maxPredictions 
-            for (let i = 0; i < maxPredictions; i++) {
+            for (let i = 0; i < 5; i++) {
                 if (prediction[i].probability.toFixed(2) > 0.1) {
                     barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
                 } else if (prediction[i].probability.toFixed(2) >= 0.01) {
@@ -242,26 +241,63 @@
                 }
                 var labelTitle;
                 switch (prediction[i].className) {
-                    case "이익준":
+                    case "lee-ikjun":
                         labelTitle = "이익준"
                         break;
-                    case "채송화":
+                    case "chae-songhwa":
                         labelTitle = "채송화"
                         break;
-                    case "안정원":
+                    case "an-jeongwon":
                         labelTitle = "안정원"
                         break;
-                    case "김준완":
+                    case "kim-junwan":
                         labelTitle = "김준완"
                         break;
-                    case "양석형":
+                    case "yang-seokhyung":
                         labelTitle = "양석형"
                         break;
+                    case "do-jaehak":
+                        labelTitle = "도재학"
+                        break;
+                    case "an-chihong":
+                        labelTitle = "안치홍"
+                        break;
+                    case "yong-seokmin":
+                        labelTitle = "용석민"
+                        break;
+                    case "jang-gyeoul":
+                        labelTitle = "장겨울"
+                        break;
+                    case "bong-gwanghyeon":
+                        labelTitle = "봉광현"
+                        break;
+                    case "chu-minha":
+                        labelTitle = "추민하"
+                        break;
+                    case "heo-seonbin":
+                        labelTitle = "허선빈"
+                        break;
+                    case "myoung-eunwon":
+                        labelTitle = "명은원"
+                        break;
+                    case "jang-yunbok":
+                        labelTitle = "장윤복"
+                        break;
+                    case "jang-hongdo":
+                        labelTitle = "장홍도"
+                        break;
+                    case "lee-iksun":
+                        labelTitle = "이익순"
+                        break;
+                    case "ko-ara":
+                        labelTitle = "고아라"
+                        break;
                     default:
-                        labelTitle = "알수없음"
+                        labelTitle = "알 수 없음"
                 }
+                var rank = i+1
                 var label = "<div class='animal-label d-flex align-items-center'>" + labelTitle + "</div>"
-                var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                var bar = "<div class='bar-container position-relative container'><div class='rank-" + rank + "-box'></div><div class='d-flex justify-content-center align-items-center rank-" + rank + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
                 labelContainer.childNodes[i].innerHTML = label + bar;
             }
         }
@@ -276,18 +312,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    
+
+    <!-- kakao addfit & coupang partners -->
     <ins class="mt-2 kakao_ad_area" style="display:none;" data-ad-unit="DAN-s18wi8hc3w34" data-ad-width="320"
         data-ad-height="100"></ins>
     <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-    
+
     <center>
-    <script src="https://ads-partners.coupang.com/g.js"></script>
-    <script>
-        new PartnersCoupang.G({ id:224391 });
-    </script>
+        <script src="https://ads-partners.coupang.com/g.js"></script>
+        <script>
+            new PartnersCoupang.G({ id: 224391 });
+        </script>
     </center>
 
+    <!-- disqus comment section -->
     <div class="mt-2" id="disqus_thread"></div>
     <script>
 
@@ -310,13 +348,15 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
             Disqus.</a></noscript>
 
-
+    <!-- addthis sharebutton -->
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e9e8d739963b888"></script>
 
 
 
-    
+
+
+
     <div class="mt-2" style="font-family: Arial, Helvetica, sans-serif; text-align: center;">
         <a href="./privacy.html">개인정보처리방침</a>
     </div>
@@ -331,7 +371,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
 
-    <!-- 기호 PNG는 starwash에 의해 설계되었고,에서 유래되었다. <a href="https://pngtree.com/">Pngtree.com</a> -->
-</body>
+    <!-- Graphics Designed By LovePik User(ID:23819102) From <a href="https://kr.lovepik.com/image-401339783/stethoscope-icon.html">LovePik.com</a></body> -->
 
 </html>
