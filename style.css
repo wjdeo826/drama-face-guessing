@@ -282,7 +282,7 @@ input:checked + label > .knob > i:before {
   font-size: 1rem;
   color: #ffffff;
 }
-.이익준-box {
+.rank-1-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -291,7 +291,7 @@ input:checked + label > .knob > i:before {
   width: 100%;
   background-color: rgba(27, 175, 234, 0.2);
 }
-.이익준-bar {
+.rank-1-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -299,7 +299,7 @@ input:checked + label > .knob > i:before {
   border-radius: 10px;
   background-color: rgba(27, 175, 234, 1);
 }
-.채송화-box {
+.rank-2-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -308,7 +308,7 @@ input:checked + label > .knob > i:before {
   width: 100%;
   background-color: rgba(251, 176, 59, 0.2);
 }
-.채송화-bar {
+.rank-2-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -317,7 +317,7 @@ input:checked + label > .knob > i:before {
   background-color: rgba(251, 176, 59, 1);
 }
 
-.김준완-box {
+.rank-3-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -326,7 +326,7 @@ input:checked + label > .knob > i:before {
   width: 100%;
   background-color: rgba(195, 140, 102, 0.2);
 }
-.김준완-bar {
+.rank-3-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -334,7 +334,7 @@ input:checked + label > .knob > i:before {
   border-radius: 10px;
   background-color: rgba(195, 140, 102, 1);
 }
-.안정원-box {
+.rank-4-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -343,7 +343,7 @@ input:checked + label > .knob > i:before {
   width: 100%;
   background-color: rgba(49, 132, 155, 0.2);
 }
-.안정원-bar {
+.rank-4-bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -351,7 +351,7 @@ input:checked + label > .knob > i:before {
   border-radius: 10px;
   background-color: rgba(49, 132, 155, 1);
 }
-.양석형-box {
+.rank-5-box {
   position: absolute;
   top: 0;
   left: 0;
@@ -360,7 +360,7 @@ input:checked + label > .knob > i:before {
   width: 100%;
   background-color: rgba(235, 166, 190, 0.2);
 }
-.양석형-bar {
+.rank-5-bar {
   position: absolute;
   top: 0;
   left: 0;
