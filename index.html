@@ -196,48 +196,65 @@
 
             switch (prediction[0].className) {
                 case "lee-ikjun":
-                    resultTitle = "<항상 긍정에너지를 내뿜는 이익준상>"
-                    resultExplain = "언제 어디서나 사람들에게 둘러싸여있는 당신은 인기쟁이! 가만히 좀 있으라며 타박을 받곤하지만 미워할 수 없는 당신은 이익준 그 자체!"
-                    resultCeleb = "자신이 힘들 때는 주변사람들에게 기대보세요"
-                    resultimage = "./img/lee-ikjun.jpg"
+                    resultTitle = "혹시 이익준이세요?"
                     break;
                 case "chae-songhwa":
-                    resultTitle = "<모든 것을 완벽히 해내는 채송화상>"
-                    resultExplain = "어려서부터 완벽히 해내는 것에 익숙한 당신. 사람들과 함께 일할때도 본인이 하는 게 맘이 편하다. 늘 완벽하고 씩씩한 모습과 밝은 웃음으로 믿음직하고 가까이 하고 싶은 당신은 채송화상!"
-                    resultCeleb = "모든 일에 무조건 열심히 하시나요? 자신에 대해 공부하는 사색의 시간을 가져보세요"
+                    resultTitle = "혹시 채송화세요?"
                     break;
                 case "kim-junwan":
-                    resultTitle = "<차가운 도시 남자 김준완상>"
-                    resultExplain = "날카로운 생김새와 차가운 이미지로 가까이 다가가기 힘든 당신. 본인은 그런 관계에 만족한다. 하지만 가끔 보이는 따뜻한 츤데레같은 모습에 자기도 모르게 인기쟁이가 된다."
-                    resultCeleb = "날카로운 말보다 부드러운 말을 건네보세요"
+                    resultTitle = "혹시 김준완이세요?"
                     break;
                 case "an-jeongwon":
-                    resultTitle = "<부드럽고 착한 이미지의 안정원상>"
-                    resultExplain = "무슨 말이라도 다 들어줄 것만 같은 안정원상. 주변인들의 평이 좋고 사람들이 쉽게 다가오지만, 불의를 지나치지 못하는 카리스마있는 사람이다."
-                    resultCeleb = "주변인들을 위해 본인의 모든 것을 희생할 필요는 없어요"
+                    resultTitle = "안정원씨 여기서 이러시면 안됩니다."
                     break;
                 case "yang-seokhyung":
-                    resultTitle = "<알고보면 따뜻한 남자, 양석형상>"
-                    resultExplain = "사람들에게 쉽게 다가가지 못하지만 알고 보면 귀여운 매력의 당신! 꼼꼼하고 섬세한 성격으로 지인들에게 인기가 많다. 포근한 매력에 듬직함까지 갖춘 사람들을 다가오게 만드는 사람!"
-                    resultCeleb = "본인의 매력을 숨기지 마세요"
+                    resultTitle = "석형이니?"
                     break;           
                 case "do-jaehak":
-                    resultTitle = "<알고보면 따뜻한 남자, 양석형상>"
-                    resultExplain = "사람들에게 쉽게 다가가지 못하지만 알고 보면 귀여운 매력의 당신! 꼼꼼하고 섬세한 성격으로 지인들에게 인기가 많다. 포근한 매력에 듬직함까지 갖춘 사람들을 다가오게 만드는 사람!"
-                    resultCeleb = "본인의 매력을 숨기지 마세요"
+                    resultTitle = "재학아 눈치챙겨"
+                    break;
+                case "an-chihong":
+                    resultTitle = "안치홍 선생 우리 익순이 어떻게 생각하나~? - 이익준 -"
+                    break;
+                case "yong-seokmin":
+                    resultTitle = "얄밉게 예쁜 믿을만한 녀석"
+                    break;
+                case "jang-gyeoul":
+                    resultTitle = "도도한 로맨티스트"
+                    break;
+                case "bong-gwanghyeon":
+                    resultTitle = "봉샘살롱 주인장"
+                    break;
+                case "chu-minha":
+                    resultTitle = "맨날 화장 이상하게 하시는 분"
+                    break;           
+                case "heo-seonbin":
+                    resultTitle = "부모님이 의사셨는지 소개글 찾아보고 알았음..."
+                    break;
+                case "myoung-eunwon":
+                    resultTitle = "착한데 너무 착한 은원쌤"
+                    break;
+                case "jang-yunbok":
+                    resultTitle = "견우와 직녀에서 직녀"
+                    break;
+                case "jang-hongdo":
+                    resultTitle = "윤복이 덕분에 혼 덜 나는 듯"
+                    break;
+                case "lee-iksun":
+                    resultTitle = "비둘기 마술사"
+                    break;
+                case "ko-ara":
+                    resultTitle = "존예, 고아라가 나왔다는 건 당신도 존예"
                     break;
                 default:
                     resultTitle = "<알 수 없음>"
                     resultExplain = ""
                     resultCeleb = ""
             };
-            var image_element = document.getElementById("yourimg-resultimg")
-            var image_src = "<img class='result-image' alt='character image' src='" + resultimage + "'"
+           
             var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
-            var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
-            var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
-            $('.result-message').html(title + explain + celeb);
-            
+            $('.result-message').html(title);
+
        
 
             // To make the resul compact, edit maxPredictions 
