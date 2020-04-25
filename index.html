@@ -193,55 +193,72 @@
 
             switch (prediction[0].className) {
                 case "lee-ikjun":
-                    resultTitle = "혹시 이익준이세요?"
+                    resultTitle = "<이익준>"
+                    resultExplain = "혹시 이익준이세요?"
                     break;
                 case "chae-songhwa":
-                    resultTitle = "혹시 채송화세요?"
+                    resultTitle = "<채송화>"
+                    resultExplain = "치홍이의 마음을 흔드는 그녀"
                     break;
                 case "kim-junwan":
-                    resultTitle = "혹시 김준완이세요?"
+                    resultTitle = "<김준완>"
+                    resultExplain = "요즘 여심 저격 중"
                     break;
                 case "an-jeongwon":
-                    resultTitle = "안정원씨 여기서 이러시면 안됩니다."
+                    resultTitle = "<안정원>"
+                    resultExplain = "안녕하세요 안정원씨 오신 김에 광고도 눌러주세요 (꾸벅)"
                     break;
                 case "yang-seokhyung":
-                    resultTitle = "석형이니?"
+                    resultTitle = "<양석형>"
+                    resultExplain = "석형이니?"
                     break;           
                 case "do-jaehak":
-                    resultTitle = "재학아 눈치챙겨"
+                    resultTitle = "<도재학>"
+                    resultExplain = "재학아 눈치챙겨"
                     break;
                 case "an-chihong":
-                    resultTitle = "이익준 최애"
+                    resultTitle = "<안치홍>"
+                    resultExplain = "육사출신 채송화 찐팬"
                     break;
                 case "yong-seokmin":
-                    resultTitle = "얄밉게 예쁜 믿을만한 녀석"
+                    resultTitle = "<용석민>"
+                    resultExplain = "치홍이 멘탈관리사"
                     break;
                 case "jang-gyeoul":
-                    resultTitle = "안정원을 노리는 자"
+                    resultTitle = "<장겨울>"
+                    resultExplain = "안정원을 노리는 자"
                     break;
                 case "bong-gwanghyeon":
-                    resultTitle = "봉샘살롱 주인장"
+                    resultTitle = "<봉광현>"
+                    resultExplain = "봉샘살롱 주인장"
                     break;
                 case "chu-minha":
-                    resultTitle = "맨날 화장 이상하게 하시는 분"
+                    resultTitle = "<추민하>"    
+                    resultExplain = "맨날 화장 이상하게 하시는 분"
                     break;           
                 case "heo-seonbin":
-                    resultTitle = "채송화 밑에서 일하는 신경외과 전공의"
+                    resultTitle = "<허송빈>"
+                    resultExplain = "채송화 밑에서 일하는 신경외과 전공의 (쓸말이 없..)"
                     break;
                 case "myoung-eunwon":
-                    resultTitle = "착한데 너무 착한 은원쌤"
+                    resultTitle = "<명은원>"
+                    resultExplain = "슬의에서 제일 둥글둥글한 사람"
                     break;
                 case "jang-yunbok":
-                    resultTitle = "견우와 직녀에서 직녀"
+                    resultTitle = "<장윤복>"
+                    resultExplain = "견우와 직녀에서 직녀"
                     break;
                 case "jang-hongdo":
-                    resultTitle = "윤복이 덕분에 혼 덜 나는 견우"
+                    resultTitle = "<장홍도>"
+                    resultExplain = "윤복이 덕분에 혼 덜 나는 견우"
                     break;
                 case "lee-iksun":
-                    resultTitle = "비둘기 마술사"
+                    resultTitle = "<이익순>"
+                    resultExplain = "비둘기 마술사"
                     break;
                 case "ko-ara":
-                    resultTitle = "존예"
+                    resultTitle = "<고아라>"
+                    resultExplain = "존예"
                     break;
                 default:
                     resultTitle = "<알 수 없음>"
@@ -250,7 +267,8 @@
             };
            
             var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
-            $('.result-message').html(title);
+            var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
+            $('.result-message').html(title + explain);
 
        
 
