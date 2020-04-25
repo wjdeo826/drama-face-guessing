@@ -105,8 +105,48 @@
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
             <div class="addthis_inline_share_toolbox_33qc"></div>
 
-            <button type="button" onclick="window.location.reload(false)" class="mt-1 remove-image">다른 사진으로 재시도</button>
+            <button type="button"  id= "remove-image" class="mt-1 remove-image" onclick= "reload()">다른 사진으로 재시도</button>
         </div>
+    </div>
+
+    <div class="popup-ad" id="popup-ad">
+         <!-- Modal content -->
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <ins class="kakao_ad_area" style="display:none;" 
+            data-ad-unit    = "DAN-1iv10dtlbw02r" 
+            data-ad-width   = "250" 
+            data-ad-height  = "250"></ins> 
+        </div>
+        <script>
+            function reload() {
+                // Get the modal
+                var modal = document.getElementById("popup-ad");
+                
+                // Get the button that opens the modal
+                var btn = document.getElementById("remove-image");
+                
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+                
+                // When the user clicks the button, open the modal 
+                btn.onclick = function() {
+                modal.style.display = "block";
+                }
+                
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    window.location.reload();
+                }
+                
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    window.location.reload();
+                }
+                }
+            }
+            </script>
     </div>
 
     <!-- AI and image upload tools -->
