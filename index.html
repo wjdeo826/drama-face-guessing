@@ -58,12 +58,20 @@
         <h2 class="subtitle">나는 누구랑 닮았을까?</h2>
     </section>
     <section class="section2">
-        <div class="container mt-5 jocoding d-flex flex-row-reverse">
+        <div class="container mt-5 pb-3 jocoding d-flex flex-row-reverse">
             <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link" target="_blank"><img
                     src="./img/jocoding.jpg" alt="조코딩의 유튜브 채널" class="youtube-icon"></a>
             <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link" target="_blank">By
                 조코딩 유튜브 채널</a>
         </div>
+    </section>
+    <h4 clase="pt-2" style="text-align: center;">성별을 선택해주세요</h4>
+    <section class="section3 mt-3 pb-5">
+        <input type="checkbox" id="gender">
+        <label for="gender">
+            <span class="knob"><i></i></span>
+        </label>
+
     </section>
     <!-- <h3 class="pb-2 d-flex justify-content-center">성별을 선택하세요</h3>
     <section class="d-flex justify-content-center">
@@ -88,7 +96,7 @@
                 <h3 class="upload-metion">이미지를 업로드하여 드라마 속 닮은꼴을 찾아보세요!</h3>
             </div>
         </div>
-        
+
         <div class="mb-2 file-upload-content">
             <img class="file-upload-image" id="face-image" src="#" alt="your image" />
             <div class="image-title-wrap">
@@ -105,48 +113,46 @@
             <!-- Go to www.addthis.com/dashboard to customize your tools -->
             <div class="addthis_inline_share_toolbox_33qc"></div>
 
-            <button type="button"  id= "remove-image" class="mt-1 remove-image" onclick= "reload()">다른 사진으로 재시도</button>
+            <button type="button" id="remove-image" class="mt-1 remove-image" onclick="reload()">다른 사진으로 재시도</button>
         </div>
     </div>
-
+    <!-- popup ad box -->
     <div class="popup-ad" id="popup-ad">
-         <!-- Modal content -->
+        <!-- Modal content -->
         <div class="modal-content">
-        <span class="close">&times;</span>
-        <ins class="kakao_ad_area" style="display:none;" 
-            data-ad-unit    = "DAN-1iv10dtlbw02r" 
-            data-ad-width   = "250" 
-            data-ad-height  = "250"></ins> 
+            <span class="close">&times;</span>
+            <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-1iv10dtlbw02r" data-ad-width="250"
+                data-ad-height="250"></ins>
         </div>
         <script>
             function reload() {
                 // Get the modal
                 var modal = document.getElementById("popup-ad");
-                
+
                 // Get the button that opens the modal
                 var btn = document.getElementById("remove-image");
-                
+
                 // Get the <span> element that closes the modal
                 var span = document.getElementsByClassName("close")[0];
-                
+
                 // When the user clicks the button, open the modal 
-                btn.onclick = function() {
-                modal.style.display = "block";
+                btn.onclick = function () {
+                    modal.style.display = "block";
                 }
-                
+
                 // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
+                span.onclick = function () {
                     window.location.reload();
                 }
-                
+
                 // When the user clicks anywhere outside of the modal, close it
-                window.onclick = function(event) {
-                if (event.target == modal) {
-                    window.location.reload();
-                }
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        window.location.reload();
+                    }
                 }
             }
-            </script>
+        </script>
     </div>
 
     <!-- AI and image upload tools -->
@@ -201,12 +207,19 @@
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
         // the link to your model provided by Teachable Machine export panel
-        const URL = "https://teachablemachine.withgoogle.com/models/YGXct8mZp/";
+        let URL
+        const urlMale = "https://teachablemachine.withgoogle.com/models/uZYbBkotz/"
+        const urlFemale = "https://teachablemachine.withgoogle.com/models/_1wts6YrE/";
 
         let model, webcam, labelContainer, maxPredictions;
 
         // Load the image model and ready to start
         async function init() {
+            if (document.getElementById("gender").checked) {
+                URL = urlMale
+            } else {
+                URL = urlFemale
+            }
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
@@ -229,88 +242,98 @@
             const prediction = await model.predict(image, false);
             prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
             console.log(prediction[0].className);
+            console.log(prediction)
             var resultTitle, resultExplain, resultCeleb, resultimage;
+            if (document.getElementById("gender").checked) {
+                switch (prediction[0].className) {
+                    case "lee-ikjun":
+                        resultTitle = "<간담췌외과 조교수 이익준>"
+                        resultExplain = "혹시 이익준이세요?"
+                        break;
+                    case "kim-junwan":
+                        resultTitle = "<흉부외과 부교수 김준완>"
+                        resultExplain = "요즘 여심 저격 중"
+                        break;
+                    case "an-jeongwon":
+                        resultTitle = "<소아외과 조교수 안정원>"
+                        resultExplain = "안녕하세요 안정원씨 오신 김에 광고도 눌러주세요 (꾸벅)"
+                        break;
+                    case "yang-seokhyung":
+                        resultTitle = "<산부인과 조교수 양석형>"
+                        resultExplain = "석형이니?"
+                        break;
+                    case "do-jaehak":
+                        resultTitle = "<흉부외과 치프 레지던트 도재학>"
+                        resultExplain = "재학아 눈치챙겨"
+                        break;
+                    case "an-chihong":
+                        resultTitle = "<신경외과 레지던트 안치홍>"
+                        resultExplain = "육사출신 채송화 찐팬"
+                        break;
+                    case "yong-seokmin":
+                        resultTitle = "<신경외과 치프 레지던트 용석민>"
+                        resultExplain = "치홍이 멘탈관리사"
+                        break;;
+                    case "bong-gwanghyeon":
+                        resultTitle = "<응급의학과 조교수 봉광현>"
+                        resultExplain = "봉샘살롱 주인장"
+                        break;
+                    case "jang-hongdo":
+                        resultTitle = "<본과 실습생 장홍도>"
+                        resultExplain = "윤복이 덕분에 혼 덜 나는 견우"
+                        break;
+                    default:
+                        resultTitle = "<알 수 없음>"
+                        resultExplain = ""
+                        resultCeleb = ""
+                }
+            } else {
+                switch (prediction[0].className) {
 
-            switch (prediction[0].className) {
-                case "lee-ikjun":
-                    resultTitle = "<간담췌외과 조교수 이익준>"
-                    resultExplain = "혹시 이익준이세요?"
-                    break;
-                case "chae-songhwa":
-                    resultTitle = "<신경외과 부교수 채송화>"
-                    resultExplain = "치홍이의 마음을 흔드는 그녀"
-                    break;
-                case "kim-junwan":
-                    resultTitle = "<흉부외과 부교수 김준완>"
-                    resultExplain = "요즘 여심 저격 중"
-                    break;
-                case "an-jeongwon":
-                    resultTitle = "<소아외과 조교수 안정원>"
-                    resultExplain = "안녕하세요 안정원씨 오신 김에 광고도 눌러주세요 (꾸벅)"
-                    break;
-                case "yang-seokhyung":
-                    resultTitle = "<산부인과 조교수 양석형>"
-                    resultExplain = "석형이니?"
-                    break;           
-                case "do-jaehak":
-                    resultTitle = "<흉부외과 치프 레지던트 도재학>"
-                    resultExplain = "재학아 눈치챙겨"
-                    break;
-                case "an-chihong":
-                    resultTitle = "<신경외과 레지던트 안치홍>"
-                    resultExplain = "육사출신 채송화 찐팬"
-                    break;
-                case "yong-seokmin":
-                    resultTitle = "<신경외과 치프 레지던트 용석민>"
-                    resultExplain = "치홍이 멘탈관리사"
-                    break;
-                case "jang-gyeoul":
-                    resultTitle = "<외과 레지던트 장겨울>"
-                    resultExplain = "안정원을 노리는 자"
-                    break;
-                case "bong-gwanghyeon":
-                    resultTitle = "<응급의학과 조교수 봉광현>"
-                    resultExplain = "봉샘살롱 주인장"
-                    break;
-                case "chu-minha":
-                    resultTitle = "<산부인과 레지던트 추민하>"    
-                    resultExplain = "맨날 화장 이상하게 하시는 분"
-                    break;           
-                case "heo-seonbin":
-                    resultTitle = "<신경외과 레지던트 허송빈>"
-                    resultExplain = "채송화 밑에서 일하는 신경외과 전공의 (쓸말이 없..)"
-                    break;
-                case "myoung-eunwon":
-                    resultTitle = "<산부인과 레지던트 명은원>"
-                    resultExplain = "슬의에서 제일 둥글둥글한 사람"
-                    break;
-                case "jang-yunbok":
-                    resultTitle = "<본과 실습생 장윤복>"
-                    resultExplain = "견우와 직녀에서 직녀"
-                    break;
-                case "jang-hongdo":
-                    resultTitle = "<본과 실습생 장홍도>"
-                    resultExplain = "윤복이 덕분에 혼 덜 나는 견우"
-                    break;
-                case "lee-iksun":
-                    resultTitle = "<이익준 여동생 이익순>"
-                    resultExplain = "비둘기 마술사"
-                    break;
-                case "ko-ara":
-                    resultTitle = "<고아라>"
-                    resultExplain = "존예"
-                    break;
-                default:
-                    resultTitle = "<알 수 없음>"
-                    resultExplain = ""
-                    resultCeleb = ""
-            };
-           
+                    case "chae-songhwa":
+                        resultTitle = "<신경외과 부교수 채송화>"
+                        resultExplain = "치홍이의 마음을 흔드는 그녀"
+                        break;
+                    case "jang-gyeoul":
+                        resultTitle = "<외과 레지던트 장겨울>"
+                        resultExplain = "안정원을 노리는 자"
+                        break;
+                    case "chu-minha":
+                        resultTitle = "<산부인과 레지던트 추민하>"
+                        resultExplain = "맨날 화장 이상하게 하시는 분"
+                        break;
+                    case "heo-seonbin":
+                        resultTitle = "<신경외과 레지던트 허송빈>"
+                        resultExplain = "채송화 밑에서 일하는 신경외과 전공의 (쓸말이 없..)"
+                        break;
+                    case "myoung-eunwon":
+                        resultTitle = "<산부인과 레지던트 명은원>"
+                        resultExplain = "슬의에서 제일 둥글둥글한 사람"
+                        break;
+                    case "jang-yunbok":
+                        resultTitle = "<본과 실습생 장윤복>"
+                        resultExplain = "견우와 직녀에서 직녀"
+                        break;
+                    case "lee-iksun":
+                        resultTitle = "<이익준 여동생 이익순>"
+                        resultExplain = "비둘기 마술사"
+                        break;
+                    case "ko-ara":
+                        resultTitle = "<고아라>"
+                        resultExplain = "존예"
+                        break;
+                    default:
+                        resultTitle = "<알 수 없음>"
+                        resultExplain = ""
+                        resultCeleb = ""
+                }
+            }
+
             var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
             var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
             $('.result-message').html(title + explain);
 
-       
+
 
             // To make the resul compact, edit maxPredictions 
             for (let i = 0; i < 5; i++) {
@@ -377,7 +400,7 @@
                     default:
                         labelTitle = "알 수 없음"
                 }
-                var rank = i+1
+                var rank = i + 1
                 var label = "<div class='animal-label d-flex align-items-center'>" + labelTitle + "</div>"
                 var bar = "<div class='bar-container position-relative container'><div class='rank-" + rank + "-box'></div><div class='d-flex justify-content-center align-items-center rank-" + rank + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
                 labelContainer.childNodes[i].innerHTML = label + bar;
@@ -445,7 +468,8 @@
 
     <footer class="mt-2" style="font-family: Arial, Helvetica, sans-serif; text-align: center;">© myfaceinkdrama 2020.
         All Rights Reserved.</footer>
-    <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+<!-- image upload section -->
+<!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -453,6 +477,16 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
 
-    <!-- Graphics Designed By LovePik User(ID:23819102) From <a href="https://kr.lovepik.com/image-401339783/stethoscope-icon.html">LovePik.com</a></body> -->
+<!-- Graphics Designed By LovePik User(ID:23819102) From <a href="https://kr.lovepik.com/image-401339783/stethoscope-icon.html">LovePik.com</a></body> -->
+
+<!-- gender toggle -->
+<!-- Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+
 
 </html>
