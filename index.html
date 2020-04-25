@@ -65,7 +65,6 @@
                 조코딩 유튜브 채널</a>
         </div>
     </section>
-    </section>
     <!-- <h3 class="pb-2 d-flex justify-content-center">성별을 선택하세요</h3>
     <section class="d-flex justify-content-center">
         <p class="d-flex align-items-center pr-3">여자</p>
@@ -89,12 +88,12 @@
                 <h3 class="upload-metion">이미지를 업로드하여 드라마 속 닮은꼴을 찾아보세요!</h3>
             </div>
         </div>
-        <div class="mb-2 file-upload-content">
-            <div class="image-section">
-                <img class="file-upload-image" id="face-image" src="#" alt="your image" />
 
-            </div>
-            
+        <div class="yourimg-resultimg">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+        </div>
+
+        <div class="mb-2 file-upload-content">
             <div class="image-title-wrap">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border" role="status">
@@ -111,7 +110,6 @@
 
             <button type="button" onclick="window.location.reload(false)" class="mt-1 remove-image">다른 사진으로 재시도</button>
         </div>
-    </div>
     </div>
 
     <!-- AI and image upload tools -->
@@ -233,13 +231,15 @@
                     resultExplain = ""
                     resultCeleb = ""
             };
-            var image = "<img class='file-upload-image' id='face-image' src='#'' alt='your image' /> <img class='result-image' src='" + resultimage +"' alt='character image' />"
+            var image_element = document.getElementById("yourimg-resultimg")
+            var image_src = "<img class='result-image' alt='character image' src='" + resultimage + "'"
             var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>"
             var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>"
             var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
             $('.result-message').html(title + explain + celeb);
-            $('.image-section').html(image)
-            var barWidth;
+            
+       
+
             // To make the resul compact, edit maxPredictions 
             for (let i = 0; i < 5; i++) {
                 if (prediction[i].probability.toFixed(2) > 0.1) {
