@@ -268,6 +268,10 @@
             console.log(prediction)
             var resultTitle, resultExplain, resultCeleb, resultimage;
             if (document.getElementById("gender").checked) {
+                gtag('event', '테스트 수행', {
+                    'event_category': '테스트 수행',
+                    'event_label': '남자'
+                });
                 switch (prediction[0].className) {
                     case "lee-ikjun":
                         resultTitle = "<간담췌외과 조교수 이익준>"
@@ -311,6 +315,10 @@
                         resultCeleb = ""
                 }
             } else {
+                gtag('event', '테스트 수행', {
+                    'event_category': '테스트 수행',
+                    'event_label': '여자'
+                });
                 switch (prediction[0].className) {
 
                     case "chae-songhwa":
